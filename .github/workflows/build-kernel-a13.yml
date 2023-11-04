@@ -14,7 +14,11 @@ on:
       - ".github/workflows/gki-kernel.yml"
       - ".github/scripts/build-a13.sh"
       - "kernel/**"
-  workflow_call:
+  workflow_dispatch:
+    inputs:
+      manual_trigger:
+        description: "Manually trigger the workflow"
+        required: true
 jobs:
   build-kernel:
     if: github.event_name != 'pull_request'
