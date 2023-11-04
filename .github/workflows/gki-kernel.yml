@@ -117,6 +117,12 @@ jobs:
           IS_DEBUG_KERNEL: ${{ inputs.debug }}
         run: |
           cd $GITHUB_WORKSPACE/android-kernel
+          echo 'config HAVE_HW_BREAKPOINT' >> common/arch/arm64/Kconfig.debug
+          echo '    bool "Hardware Breakpoint support"' >> common/arch/arm64/Kconfig.debug
+          echo '    default y' >> common/arch/arm64/Kconfig.debug
+          echo '    help' >> common/arch/arm64/Kconfig.debug
+          echo '      If this option is hardware breakpoint' >> common/arch/arm64/Kconfig.debug
+          echo '      If in doubt, say N.' >> common/arch/arm64/Kconfig.debug
           echo "[+] KernelSU setup"
           GKI_ROOT=$(pwd)
           echo "[+] GKI_ROOT: $GKI_ROOT"
